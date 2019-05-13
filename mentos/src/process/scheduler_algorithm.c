@@ -23,7 +23,8 @@ task_struct *pick_next_task(runqueue_t *runqueue, time_t delta_exec)
 	// if isHead(L, nNode)
 	if (nNode == &runqueue->queue)
 		nNode = nNode->next;
-		next = list_entry(nNode, struct task_struct, run_list);
+	
+	next = list_entry(nNode, struct task_struct, run_list);
 
 
 
