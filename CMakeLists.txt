@@ -1,20 +1,8 @@
 cmake_minimum_required(VERSION 2.8.4)
 
 # ------------------------------------------------------------------------------
-# Add the debugging option.
-set(DEBUGGING_TYPE "DEBUG_STDIO" CACHE STRING
-    "Chose the type of debugging: DEBUG_STDIO DEBUG_LOG")
-set_property(
-    CACHE DEBUGGING_TYPE PROPERTY STRINGS
-    DEBUG_STDIO
-    DEBUG_LOG)
-if ("${DEBUGGING_TYPE}" STREQUAL "DEBUG_STDIO" OR
-    "${DEBUGGING_TYPE}" STREQUAL "DEBUG_LOG")
-    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -D${DEBUGGING_TYPE}")
-    message(STATUS "Setting debugging type to ${DEBUGGING_TYPE}.")
-else ()
-    message(FATAL_ERROR "Debugging type ${DEBUGGING_TYPE} is not valid.")
-endif ()
+
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -DDEBUG_STDIO")
 
 # ------------------------------------------------------------------------------
 # Add the sub-directories.

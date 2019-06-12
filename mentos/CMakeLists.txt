@@ -55,13 +55,16 @@ endif ()
 
 # ------------------------------------------------------------------------------
 # Add the option to enable buddy system.
-option(ENABLE_BUDDY_SYSTEM "Enables the buddy system" OFF)
-if (ENABLE_BUDDY_SYSTEM)
-    message(STATUS "Enabling buddy system.")
-    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -DENABLE_BUDDYSYSTEM")
-else (ENABLE_BUDDY_SYSTEM)
-    message(STATUS "Buddy system disabled.")
-endif (ENABLE_BUDDY_SYSTEM)
+#option(ENABLE_BUDDY_SYSTEM "Enables the buddy system" OFF)
+#if (ENABLE_BUDDY_SYSTEM)
+#    message(STATUS "Enabling buddy system.")
+#    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -DENABLE_BUDDYSYSTEM")
+#else (ENABLE_BUDDY_SYSTEM)
+#    message(STATUS "Buddy system disabled.")
+#endif (ENABLE_BUDDY_SYSTEM)
+
+
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -DENABLE_BUDDYSYSTEM") #delete this
 
 # ------------------------------------------------------------------------------
 # Set the compiler options (original).
@@ -130,10 +133,7 @@ set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -ggdb")
 
 # ------------------------------------------------------------------------------
 
-if (CMAKE_BUILD_TYPE MATCHES "Release")
-elseif (CMAKE_BUILD_TYPE MATCHES "Debug")
-    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -DDEBUG")
-endif (CMAKE_BUILD_TYPE MATCHES "Release")
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -DDEBUG")
 
 # ------------------------------------------------------------------------------
 # Set the assembly flags.
@@ -302,6 +302,8 @@ set(SOURCE_FILES
 
     src/ui/shell/shell.c
     src/ui/shell/shell_login.c
+
+        src/mem/buddysystem.c
     )
 
 if (ENABLE_BUDDY_SYSTEM MATCHES "ON")
